@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.leftclicklabz.sales-bot</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/bin/zsh</string>
+    <string>/Users/mitchgach/Library/Application Support/LeftClickLabzSalesBot/run-sales-bot.sh</string>
+  </array>
+
+  <key>WorkingDirectory</key>
+  <string>/Users/mitchgach/Library/Application Support/LeftClickLabzSalesBot</string>
+
+  <key>EnvironmentVariables</key>
+  <dict>
+    <key>PATH</key>
+    <string>/Users/mitchgach/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+  </dict>
+
+  <key>RunAtLoad</key>
+  <true/>
+
+  <key>KeepAlive</key>
+  <true/>
+
+  <key>ThrottleInterval</key>
+  <integer>10</integer>
+
+  <key>StandardOutPath</key>
+  <string>/Users/mitchgach/Library/Application Support/LeftClickLabzSalesBot/.state/bot.log</string>
+
+  <key>StandardErrorPath</key>
+  <string>/Users/mitchgach/Library/Application Support/LeftClickLabzSalesBot/.state/bot.err.log</string>
+</dict>
+</plist>
