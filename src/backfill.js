@@ -33,6 +33,7 @@ async function main() {
   const hours = Number(argValue("hours", process.env.BACKFILL_HOURS || "12"));
   const limit = Number(argValue("limit", process.env.BACKFILL_LIMIT || "0"));
   const dryRun = hasFlag("dry-run");
+  const markPostedOnly = hasFlag("mark-posted-only");
   const now = Math.floor(Date.now() / 1000);
   const after = Number(argValue("after", String(now - hours * 60 * 60)));
   const before = Number(argValue("before", String(now)));
@@ -45,7 +46,7 @@ async function main() {
   const state = createStateStore(runConfig.bot.stateFile, {
     maxPendingSales: runConfig.bot.maxPendingSales,
   });
-  const xPoster = runConfig.dryRun ? null : createXPoster(runConfig.x);
+  const xPoster = runConfig.dryRun || markPostedOnly ? null : createXPoster(runConfig.x);
   const ensResolver = createEnsResolver(runConfig.ens);
   const profileResolver = createOpenSeaProfileResolver({
     apiKey: runConfig.opensea.apiKey,
@@ -86,6 +87,12 @@ async function main() {
   );
 
   for (const sale of selectedSales) {
+    if (markPostedOnly) {
+      state.markPosted(sale);
+      console.log(`Marked sale ${sale.id} as posted without posting to X`);
+      continue;
+    }
+
     await salesProcessor.handleSale(sale);
     await sleep(500);
   }
