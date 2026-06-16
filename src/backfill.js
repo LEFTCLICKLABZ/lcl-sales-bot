@@ -31,6 +31,7 @@ function sortSales(sales) {
 
 async function main() {
   const hours = Number(argValue("hours", process.env.BACKFILL_HOURS || "12"));
+  const limit = Number(argValue("limit", process.env.BACKFILL_LIMIT || "0"));
   const dryRun = hasFlag("dry-run");
   const now = Math.floor(Date.now() / 1000);
   const after = Number(argValue("after", String(now - hours * 60 * 60)));
@@ -79,9 +80,12 @@ async function main() {
 
   const sales = sortSales(salesByCollection.flat());
   const unposted = sales.filter((sale) => !state.has(sale));
-  console.log(`Found ${sales.length} sale event(s), ${unposted.length} not yet posted`);
+  const selectedSales = limit > 0 ? unposted.slice(-limit) : unposted;
+  console.log(
+    `Found ${sales.length} sale event(s), ${unposted.length} not yet posted, posting ${selectedSales.length}`,
+  );
 
-  for (const sale of unposted) {
+  for (const sale of selectedSales) {
     await salesProcessor.handleSale(sale);
     await sleep(500);
   }
