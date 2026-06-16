@@ -7,7 +7,7 @@ const sampleSale = {
   symbol: "ETH",
   usdDisplay: "$4,000",
   sellerDisplay: "leftclicklabz.eth",
-  buyerDisplay: "0x1234567890abcdef1234567890abcdef1234abcd",
+  buyerDisplay: "0x1234...abcd",
   buyer: "0x1234567890abcdef1234567890abcdef1234abcd",
   seller: "0xabcdabcdabcdabcdabcdabcdabcdabcdabcd1234",
   buyerShort: "0x1234...abcd",
