@@ -102,11 +102,10 @@ THE LEGEND @buyer LEFT CLICKED!
 SMITHS: Smith #123
 Sold for 1.23 WETH ($4,000 USD)
 From: leftclicklabz.eth -> 0x1234...abcd
-Tx: 0xbeef...cafe
 CLICK. COLLECT. CREATE CULTURE.
 ```
 
-Tweet text intentionally omits OpenSea and Etherscan URLs so X bills the cheaper non-URL post tier. The NFT image is still uploaded as media.
+Tweet text intentionally omits OpenSea, Etherscan, and transaction URLs so X bills the cheaper non-URL post tier. The NFT image is still uploaded as media.
 
 ## Notes
 
