@@ -44,13 +44,11 @@ function buildTweet(sale, options) {
   const walletFlow = fromWallet && toWallet
     ? `From: ${fromWallet} -> ${toWallet}`
     : "";
-  const txLine = sale.txShort ? `Tx: ${sale.txShort}` : "";
   const details = compactLines([
     title,
     `${collectionName}: ${sale.name}`,
     `Sold for ${price}`,
     walletFlow,
-    txLine,
     "",
     "CLICK. COLLECT. CREATE CULTURE.",
     hashtags,
@@ -64,7 +62,6 @@ function buildTweet(sale, options) {
     `${collectionName}: ${shorterName}`,
     `Sold for ${price}`,
     walletFlow,
-    txLine,
     "CLICK. COLLECT. CREATE CULTURE.",
     hashtags,
   ]);
@@ -75,7 +72,6 @@ function buildTweet(sale, options) {
     title,
     `${shorterName} sold for ${price}`,
     walletFlow,
-    txLine,
     hashtags,
   ]);
   return minimal;
